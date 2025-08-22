@@ -79,3 +79,81 @@ class Flow
         return $response;
 
     }
+
+    public static function ConsultarTransaccion($params)
+    {
+        if(Init::FLOW_STATUS == false):
+
+            $url = "https://sandbox.flow.cl/api/payment/getStatusExtended";
+
+        else:
+
+            $url = "https://www.flow.cl/api/payment/getStatusExtended";
+
+        endif;
+
+        //$token = $params["token"];
+
+        $token = $params["token"];
+        // Claves de producción
+        $apiKey = $params["apiKey"];
+        $secretKey = $params["secretKey"];
+
+        // Endpoint de Flow
+
+
+        // Parámetros requeridos por Flow
+        $datos = array(
+            "apiKey" => $apiKey,
+            "token" => $token
+        );
+
+        $keys = array_keys($datos);
+        sort($keys);
+        $toSign = "";
+        foreach ($keys as $key) {
+            $toSign .= $key . trim($datos[$key]);
+        }
+
+        $firma = hash_hmac("sha256", $toSign, $secretKey);
+        $datos["s"] = $firma;
+        $datos = http_build_query($datos);
+        $url = $url . "?" . $datos;
+
+        // Configurar cURL
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $responseData = curl_exec($ch);
+        curl_close($ch);
+
+        $responseData = json_decode($responseData, true);
+
+        if (!is_array($responseData)):
+            $response = array(
+                "status" => false,
+                "error" => "Respuesta inválida desde Flow",
+                "raw" => $responseData
+            );
+        else:
+
+            $response = array(
+                "estatus" => true,
+                "subject" => $responseData["subject"],
+                "status" => $responseData["status"],
+                "response_khipu" => $responseData
+            );
+
+        endif;
+        /*
+        El estado de la order
+            1 pendiente de pago
+            2 pagada
+            3 rechazada
+            4 anulada
+        */
+
+
+        return $response;
+    }
