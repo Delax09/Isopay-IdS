@@ -71,3 +71,77 @@ class Khipu
         return $response;
 
     }
+
+
+    public static function ConsultarTransaccion($params)
+    {
+
+        $apiKey = $params["apiKey"];
+
+        $token = $params["token"];
+
+        $urlBase = "https://payment-api.khipu.com/v3/payments/";
+
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $urlBase . $token,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => [
+                "x-api-key: $apiKey"
+            ]
+        ]);
+
+        $response = curl_exec($ch);
+        $error = curl_error($ch);
+        curl_close($ch);
+
+        if ($error):
+            $response = array(
+                "estatus" => false,
+                "msg" => "cURL Error: $error"
+            );
+        else:
+            $responseData = json_decode($response, true);
+
+            if (!isset($responseData["payment_url"])):
+                $response = array(
+                    "estatus" => false,
+                    "msg" => $responseData["message"] ?? "Error desconocido",
+                    "response khipu" => $responseData
+                );
+
+            else:
+
+                $response = array(
+                    "estatus" => true,
+                    "subject" => $responseData["subject"],
+                    "status" => $responseData["status"],
+                    "status_detail" => $responseData["status"],
+                    "response_khipu" => $responseData
+                );
+
+            endif;
+
+        endif;
+
+
+        /* Estados posibles (status):
+          - "pending"
+          - "verifying"
+          - "done"
+
+         Detalle de estado (status_detail):
+          - "pending"
+          - "normal"
+          - "marked-paid-by-receiver"
+          - "rejected-by-payer"
+          - "marked-as-abuse"
+          - "reversed"
+       * */
+
+        return $response;
+    }
+
+
+}
