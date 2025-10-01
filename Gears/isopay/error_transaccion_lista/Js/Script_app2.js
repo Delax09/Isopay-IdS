@@ -1,0 +1,1 @@
+$.sys.gridDatatable(config_list_errortransaccionlista_id, config_list_errortransaccionlista)
