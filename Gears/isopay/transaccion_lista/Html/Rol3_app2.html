@@ -1,0 +1,138 @@
+
+
+					<!-- begin:: Content Head -->
+					<div class="kt-subheader  kt-grid__item" id="kt_subheader">
+
+						<div class="kt-container ">
+
+							<div class="kt-subheader__main">
+								<h3 class="kt-subheader__title">
+									[TRANSACCIONLISTA_TITULO] </h3>
+								<span class="kt-subheader__separator kt-subheader__separator--v"></span>
+								<div class="kt-subheader__breadcrumbs" id="breadcum">
+									[TRANSACCIONLISTA_DESCRIPCION]
+								</div>
+							</div>
+							<div class="kt-subheader__main">
+
+								<div class="kt-subheader__wrapper">
+
+									
+
+								</div>
+
+							</div>
+
+							<div class="kt-subheader__toolbar">
+
+								<div id="FORM_ACCIONES_TRANSACCIONLISTA" class="kt-subheader__wrapper">
+
+
+									[TRANSACCIONLISTA_EXPORTAR]
+									<button data-trigger="#FORM_CANVAS_TRANSACCIONLISTA" class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-filter"></i>  Filtrar  </button>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- end:: Content Head -->
+					<div class="kt-container  kt-grid__item kt-grid__item--fluid">
+						<!--Begin:: Advanced Search-->
+
+						<!--End:: Advanced Search-->
+						<div class="kt-portlet kt-portlet--mobile h100vh">
+							<div class="kt-portlet__head kt-portlet__head--lg">
+								<div class="kt-portlet__head-label">
+									<h3 class="kt-portlet__head-title">
+										Resultado de la búsqueda
+									</h3>
+								</div>
+								<div class="kt-portlet__head-toolbar">
+
+									<div class="kt-portlet__head-wrapper">
+										<div id="" class="kt-portlet__head-actions">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="kt-container  kt-container--fluid multi-collapse collapse show" id="collapseTable">
+								<div class="kt-portlet kt-portlet--height-fluid mt-4">
+									<!--begin: Datatable -->
+                                    
+                                    <div id="result-cu-transaccionlista" class="table-responsive">
+
+									
+                                    <table class="table table-sm  table-hover table-hover  table-checkable " id="grid-table-transaccionlista">
+										<thead class="thead-light">        
+                                            
+											<tr>
+												 <!-- BEGIN DYNAMIC BLOCK: HEADER_TRANSACCIONLISTA_LIST -->
+												<th>[INPUT_CAMPO_TRANSACCIONLISTA]</th>
+                                            <!-- END DYNAMIC BLOCK: HEADER_TRANSACCIONLISTA_LIST -->  
+												
+											</tr>
+										</thead>
+									</table>
+                                    </div>
+
+									<!--end: Datatable -->
+								</div>
+							</div>
+							
+						</div>
+					</div>
+
+
+					<aside style="display: none"  class="offcanvas offcanvas-right" id="FORM_CANVAS_TRANSACCIONLISTA">
+
+						<div class="kt-portlet">
+							<div class="kt-portlet__head">
+								<div class="kt-portlet__head-label">
+									<h3 class="kt-portlet__head-title">
+										Filtrar resultado
+									</h3>
+								</div>
+								<div class="kt-portlet__head-toolbar">
+									<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-clean btn-icon-md btn-close-offcanvas" ><i class="la la-close"></i></a>
+								</div>
+
+							</div>
+
+							<!--begin::Form-->
+							<form class="kt-form" id="FORM_FILTRO_TRANSACCIONLISTA">
+								<div class="kt-portlet__body">
+									<!-- BEGIN DYNAMIC BLOCK: FILTRO_ROW_TRANSACCIONLISTA_LIST -->
+
+									<!-- BEGIN DYNAMIC BLOCK: FILTRO_TRANSACCIONLISTA_LIST -->
+
+
+									[TRANSACCIONLISTA_FILTROS]
+
+									<!-- END DYNAMIC BLOCK: FILTRO_TRANSACCIONLISTA_LIST -->
+
+									<!-- END DYNAMIC BLOCK: FILTRO_ROW_TRANSACCIONLISTA_LIST -->
+								</div>
+								<div class="kt-portlet__foot" style="  position: fixed;
+    bottom: 0;
+    width: 100%;">
+									<div class="kt-form__actions">
+										<button  class="btn btn limpia_off  btn-primary btn-corner" id="system-search-transaccionlista" type="button">
+											<i class="la la-search"></i>
+											Buscar
+										</button>
+										<button  class="btn btn limpia_off  btn-secondary btn-corner" id="system-clear-transaccionlista" type="button">
+											<i class="la la-close"></i>
+											Limpiar
+										</button>
+									</div>
+								</div>
+							</form>
+
+							<!--end::Form-->
+						</div>
+
+
+
+					</aside>

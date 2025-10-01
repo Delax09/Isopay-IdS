@@ -1,0 +1,1 @@
+$.sys.gridDatatable(config_list_transaccionlista_id, config_list_transaccionlista)
