@@ -1,0 +1,109 @@
+<div class="page-content header-clear-medium">
+
+
+
+
+
+
+	<div class="card card-style pb-4">
+        <form id="form-cuotas" action="./?view=CuotasApoderado&pagar=1" method="post">
+
+		<div class="content">
+			<div class="d-flex justify-content-between align-items-center">
+				<div>
+					<h3>Cuotas</h3>
+					<p class="mt-n1 pb-0 line-height-m">
+						[NOMBRE_ALUMNO] - [CURSO_ALUMNO]<BR>
+						[DESCRIPCION]
+
+					</p>
+
+				</div>
+
+                <div class="col-6 ps-1 text-end">
+                    <button type="submit" class="btn btn-l btn-full mb-3 rounded-xl text-uppercase font-900 shadow-s bg-blue-dark w-100">
+                        Pagar
+                    </button>
+                </div>
+
+            </div>
+		</div>
+
+
+		<div class="content" id="tab-group-3">
+
+			<div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">
+				<a href="#" class="no-effect" data-active data-bs-toggle="collapse" data-bs-target="#tab-8">Pendientes</a>
+				<a href="#" class="no-effect" data-bs-toggle="collapse" data-bs-target="#tab-9">Historial</a>
+			</div>
+			<div class="clearfix mb-3"></div>
+			<div data-bs-parent="#tab-group-3" class="collapse show" id="tab-8">
+				<table class="table  shadow-l mb-0" style="overflow: hidden;">
+					<thead>
+					<tr>
+						<th scope="col" class="">Nº Cuota <br> Periodo</th>
+						<th scope="col" class="">Monto <br> Fecha Vencimiento</th>
+
+						<th scope="col" class="">Seleccionar</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					<!-- BEGIN DYNAMIC BLOCK: LISTAR_CUOTAS -->
+					<tr class="color-gray-dark">
+						<th scope="row" style="text-align: left">Nº [N_CUOTA]<br><small>Año [PERIODO]</small> </th>
+						<td>[MONTO]<br>
+							[FECHA]
+						</td>
+						<td>
+							[BOTON]
+						</td>
+
+					</tr>
+					<!-- END DYNAMIC BLOCK: LISTAR_CUOTAS -->
+					</tbody>
+				</table>
+			</div>
+
+			<!-- HISTORIAL -->
+			<div data-bs-parent="#tab-group-3" class="collapse" id="tab-9">
+				<table class="table  shadow-l mb-0" style="overflow: hidden;">
+					<thead>
+					<tr>
+						<th scope="col" class="">Nº Cuota <br> Periodo</th>
+						<th scope="col" class="">Monto <br> Fecha Pagada</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					<!-- BEGIN DYNAMIC BLOCK: LISTAR_HISTORIAL -->
+					<tr class="color-gray-dark">
+						<th scope="row" style="text-align: left">Nº [N_CUOTA_HISTORIAL]<br><small>Año [PERIODO_HISTORIAL]</small> </th>
+						<td>[MONTO_HISTORIAL]<br>
+							[FECHA_HISTORIAL]
+						</td>
+						<td>
+							[ESTADO_HISTORIAL]
+						</td>
+
+					</tr>
+					<!-- END DYNAMIC BLOCK: LISTAR_HISTORIAL -->
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+
+        </form>
+	</div>
+
+
+
+	<div id="footer-bar" class="footer-bar-4">
+		<a href="./"><i class="fa-solid fa-arrow-left"></i><span>Volver</span></a>
+
+	</div>
+
+
+</div>

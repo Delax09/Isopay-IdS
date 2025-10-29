@@ -1,0 +1,101 @@
+<div class="page-content header-clear-medium">
+    <form action="./" method="post" id="resumen-pago">
+    <div class="card card-style pb-4">
+
+        <div class="content">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3>Detalle de Pago</h3>
+                    <p class="mt-n1 pb-0 line-height-m">
+                        [NOMBRE_ALUMNO] - [CURSO_ALUMNO]<BR>
+                        [DESCRIPCION] </p>
+                </div>
+                <div class="col-4 ps-1 text-end">
+                    <p class="font-900 color-blue-dark mb-0">TOTAL</p>
+                    <h3 class="font-900 color-blue-dark">$ [MONTO_TOTAL]</h3>
+                    <input type="hidden" name="monto_total" value="[MONTO_TOTAL]">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content" id="tab-group-2">
+            <div class="collapse show" id="tab-8" data-bs-parent="#tab-group-2">
+                <div class="card card-style shadow-sm overflow-hidden">
+                    <div class="card-header bg-light py-2">
+                        <h4 class="mb-0 text-center">Detalle de Cuotas</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped mb-0 align-middle">
+                            <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="text-center">Nº Cuota<br><small>Periodo</small></th>
+                                <th scope="col" class="text-center">Monto<br><small>Fecha Vencimiento</small></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- BEGIN DYNAMIC BLOCK: LISTAR_CUOTAS -->
+                            <tr>
+                                <th scope="row" class="text-center">
+                                    Nº [N_CUOTA]<br>
+                                    <small class="text-muted">Año [PERIODO]</small>
+                                </th>
+                                <td class="text-center">
+                                    $ [MONTO]<br>
+                                    <small class="text-muted">[FECHA]</small>
+                                    <input type="hidden" name="cuotas_final[]" value="[ID_CUOTA_ENC]">
+                                </td>
+                            </tr>
+                            <!-- END DYNAMIC BLOCK: LISTAR_CUOTAS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIV PARA PONER LAS PASARELAS-->
+        <div class="content">
+            <div class="card card-style shadow-sm overflow-hidden">
+                <div class="card-header bg-light py-2">
+                    <h4 class="mb-0 text-center">Selecciona una Pasarela de Pago</h4>
+                </div>
+                <div class="card-body text-center">
+
+                    <!-- BEGIN DYNAMIC BLOCK: LISTAR_PASARELAS -->
+                    <div class="form-check form-check-inline m-2">
+                        <input class="form-check-input" type="radio" name="pasarela" id="[PASARELA_VALUE]" value="[PASARELA_VALUE]" required>
+                        <label class="form-check-label font-600" for="[PASARELA_VALUE]">
+                            [PASARELA_NOMBRE]
+                        </label>
+                    </div>
+                    <!-- END DYNAMIC BLOCK: LISTAR_PASARELAS -->
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content text-center">
+            <button  type="submit"
+               id="btn-confirmar-pago"
+               class="btn btn-m w-100 mb-3 rounded-xl text-uppercase font-900 shadow-s bg-green-dark d-block">
+                Confirmar Pago ([MONTO_TOTAL])
+            </button>
+            <a href="./?view=CuotasApoderado" class="btn btn-s btn-full mb-6 rounded-xl text-uppercase font-900 shadow-s bg-gray-dark">Modificar Selección</a>
+        </div>
+
+
+    </div>
+
+        <input name="view" value="ResumenPagoApoderado" type="hidden">
+
+    </form>
+
+
+    <div id="footer-bar" class="footer-bar-4">
+        <a href="./?view=CuotasApoderado"><i class="fa-solid fa-arrow-left"></i><span>Volver</span></a>
+    </div>
+    
+
+</div>
