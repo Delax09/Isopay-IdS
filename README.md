@@ -13,9 +13,10 @@ Por lo tanto, este repositorio refleja la adaptación del desarrollo a las tecno
 
 - Archivos de configuración del entorno **Nginx**.  
 - Componentes desarrollados específicamente para el proyecto **IsoPay**.  
-- Scripts y recursos necesarios para la ejecución en el servidor de pruebas de Isócrates.  
+- Scripts y recursos necesarios para la ejecución en el servidor de Isócrates.  
 
 ## Notas
 
-- Este repositorio está asociado únicamente al proyecto **IsoPay**.  
-- La infraestructura de despliegue y los servicios relacionados son administrados directamente por **Isócrates**.  
+- Los archivos "Gears", "Helper" y "Servicios" ubicados en la carpeta raíz pertenecen al servidor:
+isocrates@pay.isocrates.pro:22
+- La carpeta isocrates@aws.isocr.cl:22022 corresponde al servidor de Isócrates en el cual se desarrolló el módulo de pago de cuotas.
