@@ -143,5 +143,47 @@ class TransBank
 
         return $response;
     }
+
+        public static function ConfirmacionTransbank($params)
+    {
+
+        $apiKey = $params->apiKey;
+        $secretKey = $params->secretKey;
+        $token = $params->token;
+
+
+        if(Init::TRANSBANK_STATUS == false):
+            // Datos de la transacción (Estos son del ambiente sandbox)
+            $url = 'https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.2/transactions/' . $token;
+        else:
+            // AL PASAR A PRODUCCION DESCOMENTAR ESTOS CAMPOS
+            $url = 'https://webpay3g.transbank.cl/rswebpaytransaction/api/webpay/v1.2/transactions/' . $token;
+
+        endif;
+
+
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "PUT",
+            CURLOPT_HTTPHEADER => array(
+                "Tbk-Api-Key-Id: ". $apiKey,
+                "Tbk-Api-Key-Secret: ". $secretKey,
+                "Content-Type: application/json"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+
+        Return $response;
+
+    }
 }
+
 
