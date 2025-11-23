@@ -5,10 +5,14 @@ class CuotasApoderadoRun extends CuotasApoderadoRunConfig
 
 	public function BeforeLoad()		
 	{
-        
 
+        //Arr::view($_REQUEST);die;
 
-		if(Vars::req("token")): //FLOW
+        if(Vars::req("pagar") == 1):
+
+            parent::Execute("Pagar");
+
+        elseif(Vars::req("token")): //FLOW
 
 			parent::Execute("Flow");
 
@@ -16,7 +20,16 @@ class CuotasApoderadoRun extends CuotasApoderadoRunConfig
 
 			parent::Execute("Transbank");
 
-		endif;
+        elseif(Vars::req("preference_id")):
+
+            parent::Execute("MercadoPago");
+
+        elseif(Vars::req("pendiente") == 1):
+
+            parent::Execute("Khipu");
+
+
+        endif;
 
 
 		
